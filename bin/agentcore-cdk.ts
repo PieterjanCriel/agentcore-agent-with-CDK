@@ -1,20 +1,23 @@
 #!/usr/bin/env node
+import assert from 'assert';
+
 import * as cdk from 'aws-cdk-lib';
 import { AgentcoreCdkStack } from '../lib/agentcore-cdk-stack';
 
+
+const env = {
+    account: process.env.CDK_DEFAULT_ACCOUNT || process.env.AWS_PROFILE?.split('-')[1],
+    region: process.env.CDK_DEFAULT_REGION || process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION,
+};
+
+assert(env.account, 'Missing account environment variable');
+assert(env.region, 'Missing region environment variable');
+
 const app = new cdk.App();
 new AgentcoreCdkStack(app, 'AgentcoreCdkStack', {
-  /* If you don't specify 'env', this stack will be environment-agnostic.
-   * Account/Region-dependent features and context lookups will not work,
-   * but a single synthesized template can be deployed anywhere. */
-
-  /* Uncomment the next line to specialize this stack for the AWS Account
-   * and Region that are implied by the current CLI configuration. */
-  // env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
-
-  /* Uncomment the next line if you know exactly what Account and Region you
-   * want to deploy the stack to. */
-  // env: { account: '123456789012', region: 'us-east-1' },
-
-  /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
+  env: env,
+  description: 'AgentCoreCDK',
+  tags: {
+    Project: 'AgentCore',
+  },
 });

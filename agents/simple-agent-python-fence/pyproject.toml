@@ -1,0 +1,10 @@
+[project]
+name = "agentcore-simple-agent-python-fence"
+version = "0.1.0"
+description = "A simple agent for agentcore that uses fence-llm to generate responses."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "bedrock-agentcore>=0.1.0",
+    "fence-llm>=2.0.2"
+]
