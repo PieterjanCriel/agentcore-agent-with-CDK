@@ -16,6 +16,7 @@ It handles Docker builds, ECR uploads, IAM, and CloudWatch automatically — per
 ## Agent Examples
 
 ### Fence
+
 ```python
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
 from fence.agents.bedrock import BedrockAgent

@@ -1,0 +1,20 @@
+# Python virtual environments
+.venv
+venv
+env
+ENV
+
+# Python files
+*.py
+
+# Node modules
+node_modules
+
+# Build outputs
+dist
+build
+cdk.out
+
+# Logs
+*.log
+
